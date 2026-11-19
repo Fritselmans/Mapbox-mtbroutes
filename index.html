@@ -41,6 +41,24 @@
         }
     });
 });
+    map.on('load', () => {
+
+    map.addSource('kastelen', {
+        type: 'geojson',
+        data: './Kastelen.geojson'
+    });
+
+    map.addLayer({
+        id: 'kastelen-kerken-versterkingen',
+        type: 'circle',
+        source: 'kastelen',
+        paint: {
+            'circle-radius': 5,
+            'circle-color': '#800080'
+        }
+    });
+
+});
     fetch('./Bukk-Maraton-Kozep-2024.geojson')
         .then(response => response.json())
         .then(data => {
