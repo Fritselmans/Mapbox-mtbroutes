@@ -26,6 +26,22 @@
 
     map.addControl(new mapboxgl.NavigationControl());
 
+    map.on('load', () => {
+      map.addSource('bukk', {
+    type: 'geojson',
+    data: './Bükk Maraton Közép 2024.geojson'
+});
+
+map.addLayer({
+    id: 'bukk-route',
+    type: 'line',
+    source: 'bukk',
+    paint: {
+        'line-color': '#ff6600',
+        'line-width': 4
+    }
+});
+      
     new mapboxgl.Marker()
       .setLngLat([20.37, 47.9])
       .setPopup(new mapboxgl.Popup().setText('Hallo, dit is mijn kaart!'))
