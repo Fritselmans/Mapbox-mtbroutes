@@ -41,6 +41,23 @@
         }
     });
 });
+    fetch('./Bukk-Maraton-Kozep-2024.geojson')
+        .then(response => response.json())
+        .then(data => {
+    
+            const coords = data.features[0].geometry.coordinates;
+    
+            const bounds = new mapboxgl.LngLatBounds();
+    
+            coords.forEach(coord => {
+                bounds.extend([coord[0], coord[1]]);
+    });
+    
+            map.fitBounds(bounds, {
+                padding: 40
+    });
+});
+    
     new mapboxgl.Marker()
       .setLngLat([20.37, 47.9])
       .setPopup(new mapboxgl.Popup().setText('Hallo, dit is mijn kaart!'))
