@@ -43,7 +43,7 @@
         }
     });
 
-  fetch('./bukk-maraton.geojson')
+  fetch('./Bukk-Maraton-Kozep-2024.geojson')
     .then(response => response.json())
     .then(data => {
 
@@ -58,7 +58,6 @@
         map.fitBounds(bounds, {
             padding: 40
         });
-    });    
 
       
     new mapboxgl.Marker()
