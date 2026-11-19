@@ -43,7 +43,22 @@
         }
     });
 
-      
+  fetch('./bukk-maraton.geojson')
+    .then(response => response.json())
+    .then(data => {
+
+        const coords = data.features[0].geometry.coordinates;
+
+        const bounds = new mapboxgl.LngLatBounds();
+
+        coords.forEach(coord => {
+            bounds.extend([coord[0], coord[1]]);
+        });
+
+        map.fitBounds(bounds, {
+            padding: 40
+        });
+    });    
 
       
     new mapboxgl.Marker()
