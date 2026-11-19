@@ -15,7 +15,7 @@
   <div id="map"></div>
   <script>
     // Plak hier je PUBLIEKE token (begint met pk.)
-    mapboxgl.accessToken = 'pk.JOUW_TOKEN_HIER';
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYnVra2ktc2FuZG9yIiwiYSI6ImNtd2t1cTl4MjA1bmQzMHNmNWFzZGtrMHgifQ.eAlk8Y4kfziqqG32N6MXfA';
 
     const map = new mapboxgl.Map({
       container: 'map',
