@@ -26,49 +26,6 @@
 
     map.addControl(new mapboxgl.NavigationControl());
 
-    map.on('load', () => {
-
-    map.addSource('bukk', {
-        type: 'geojson',
-        data: './Bukk-Maraton-Kozep-2024.geojson'
-    });
-
-    map.addLayer({
-        id: 'bukk-route',
-        type: 'line',
-        source: 'bukk',
-        paint: {
-            'line-color': '#ff6600',
-            'line-width': 4
-        }
-    });
-
-  fetch('./Bukk-Maraton-Kozep-2024.geojson')
-    .then(response => response.json())
-    .then(data => {
-
-        const coords = data.features[0].geometry.coordinates;
-
-        const bounds = new mapboxgl.LngLatBounds();
-
-        coords.forEach(coord => {
-            bounds.extend([coord[0], coord[1]]);
-});
-
-        map.fitBounds(bounds, {
-            padding: 40
-        });
-
-      map.on('click', 'bukk-route', (e) => {
-
-    const naam = e.features[0].properties.name;
-
-    new mapboxgl.Popup()
-        .setLngLat(e.lngLat)
-        .setHTML(`<b>${naam}</b>`)
-        .addTo(map);
-});
-     
     new mapboxgl.Marker()
       .setLngLat([20.37, 47.9])
       .setPopup(new mapboxgl.Popup().setText('Hallo, dit is mijn kaart!'))
