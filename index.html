@@ -53,13 +53,22 @@
 
         coords.forEach(coord => {
             bounds.extend([coord[0], coord[1]]);
-        });
+});
 
         map.fitBounds(bounds, {
             padding: 40
         });
 
-      
+      map.on('click', 'bukk-route', (e) => {
+
+    const naam = e.features[0].properties.name;
+
+    new mapboxgl.Popup()
+        .setLngLat(e.lngLat)
+        .setHTML(`<b>${naam}</b>`)
+        .addTo(map);
+});
+     
     new mapboxgl.Marker()
       .setLngLat([20.37, 47.9])
       .setPopup(new mapboxgl.Popup().setText('Hallo, dit is mijn kaart!'))
